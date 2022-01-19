@@ -12,11 +12,11 @@ SERVICE_NAME="Internet Indicator"
 
 function loop() {
   while true; do
-    hg680p_1 -lan warn
+    hg680p-1 -lan warn
     if curl -X "HEAD" --connect-timeout 3 -so /dev/null "http://www.gstatic.com/generate_204"; then
-      hg680p_1 -lan on
+      hg680p-1 -lan on
     else
-      hg680p_1 -lan off
+      hg680p-1 -lan off
     fi
     sleep 1
   done
