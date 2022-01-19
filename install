@@ -1,1 +1,8 @@
-get
+#!/bin/bash
+
+clear
+(cd /usr/bin && curl -sLko hg680p.sh https://raw.githubusercontent.com/Putra-0/gpio-hg680p/main/hg680p.sh && chmod +x hg680p.sh)
+(cd /usr/bin && curl -sLko hg680p.sh https://raw.githubusercontent.com/Putra-0/gpio-hg680p/main/hg680p.sh && chmod +x hg680p.sh)
+echo " Install selesai"
+echo " ketik perintah : inet-hg680p.sh -r"
+echo " Untuk Menyalakan LED Internet Indicator"
