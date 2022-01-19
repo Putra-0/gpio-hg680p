@@ -12,19 +12,33 @@ SERVICE_NAME="Internet Indicator"
 
 function loop() {
   while true; do
-    hg680p -power warn
+    hg680p -lan warn
     if curl -X "HEAD" --connect-timeout 3 -so /dev/null "http://www.gstatic.com/generate_204"; then
-      hg680p -power on
+      hg680p -lan on
     else
-      hg680p -power off
+      hg680p -lan off
     fi
     sleep 1
   done
 }
 
+function loop2() {
+  while true; do
+    hg680p -power on
+    if curl -X "HEAD" --connect-timeout 3 -so /dev/null "http://www.gstatic.com/generate_204"; then
+      hg680p -power off
+    else
+      hg680p -power warn
+    fi
+    sleep 1
+  done
+}
+
+
 function start() {
   echo -e "Starting ${SERVICE_NAME} service ..."
   screen -AmdS internet-indicator "${0}" -l
+  screen -AmdS internet-indicator "${0}" -ll
 }
 
 function stop() {
@@ -43,6 +57,9 @@ EOF
 case "${1}" in
   -l)
     loop
+    ;;
+  -ll)
+    loop2
     ;;
   -r)
     start
