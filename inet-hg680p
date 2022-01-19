@@ -37,7 +37,7 @@ function loop2() {
 
 function start() {
   echo -e "Starting ${SERVICE_NAME} service ..."
-  screen -AmdS internet-indicator "${0}" -l ; sleep 1;
+  screen -AmdS internet-indicator "${0}" -l ; sleep 2;
   screen -AmdS internet-indicator "${0}" -ll
 }
 
